@@ -1,0 +1,86 @@
+---
+import { NAME, POSITIONING, EMAIL, GITHUB_URL, LINKEDIN_URL, CV_FILENAME, href } from '../consts';
+---
+
+<section class="wrap hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="name">{NAME}</p>
+      <p class="roles mono">AI / ML / MLOps Engineer · Barcelona</p>
+      <h1>{POSITIONING}</h1>
+      <p class="lede">
+        BSc Physics · MSc in AI · 5+ years in industry - 4 as an SRE based in London, now building ML and GenAI
+        systems in Barcelona.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href={href('/' + CV_FILENAME)} target="_blank" rel="noopener">view cv ↓</a>
+        <a class="btn btn-ghost" href={`mailto:${EMAIL}`}>email me</a>
+        <a class="btn btn-ghost" href={GITHUB_URL}>github</a>
+        <a class="btn btn-ghost" href={LINKEDIN_URL}>linkedin</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src={href('/photo.jpg')} alt={`Portrait of ${NAME}`} width="320" height="446" loading="eager" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: 4rem 1rem;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+  }
+  .name {
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.35rem;
+  }
+  .roles {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent-deep);
+    letter-spacing: 0.01em;
+    margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+    max-width: 32ch;
+    margin-bottom: 1.2rem;
+  }
+  .lede {
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin-bottom: 2rem;
+  }
+  .actions {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 760px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-photo {
+      order: -1;
+      max-width: 220px;
+      margin-inline: auto;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      max-width: none;
+    }
+  }
+</style>
