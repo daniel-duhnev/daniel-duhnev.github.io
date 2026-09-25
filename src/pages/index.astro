@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Base>
+  <main>
+    <Hero />
+
+    <Section id="experience" eyebrow="stage 01 / experience" title="On the Job">
+      <ExperienceTimeline />
+    </Section>
+
+    <Section id="skills" eyebrow="stage 02 / stack" title="Toolbox">
+      <SkillsGrid />
+    </Section>
+
+    <Section id="contact" eyebrow="stage 03 / deploy" title="Let's talk">
+      <Contact />
+    </Section>
+  </main>
+</Base>
