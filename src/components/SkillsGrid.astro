@@ -1,0 +1,105 @@
+---
+import { skills, education } from '../data/profile';
+---
+
+<div class="grid">
+  {
+    skills.map(({ group, items }) => (
+      <div class="cell">
+        <h3 class="mono">{group}</h3>
+        <ul>
+          {items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+<div class="edu">
+  <h3 class="mono">Education</h3>
+  {
+    education.map((d) => (
+      <div class="degree">
+        <div class="degree-head">
+          <span class="degree-name" set:html={d.degree} />
+          <span class="degree-dates mono">{d.dates}</span>
+        </div>
+        <p class="degree-org">{d.org}</p>
+        <ul class="degree-details">
+          {d.details.map((line) => (
+            <li set:html={line} />
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 1.6rem 2rem;
+  }
+  h3 {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  li {
+    padding-block: 0.12rem;
+  }
+  .edu {
+    margin-top: 2rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border);
+    max-width: 46rem;
+  }
+  .degree {
+    margin-top: 1.3rem;
+  }
+  .degree:first-of-type {
+    margin-top: 0.7rem;
+  }
+  .degree-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .degree-name {
+    font-weight: 650;
+    font-size: 0.98rem;
+    letter-spacing: -0.01em;
+  }
+  .degree-dates {
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+  }
+  .degree-org {
+    color: var(--accent-deep);
+    font-weight: 550;
+    font-size: 0.88rem;
+    margin: 0.1rem 0 0.4rem;
+  }
+  .degree-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+  }
+  .degree-details li {
+    padding: 0;
+  }
+</style>
